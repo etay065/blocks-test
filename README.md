@@ -17,9 +17,8 @@ A WordPress plugin that registers two custom Gutenberg blocks — **Posts Grid**
 ## Installation & Setup
 
 1. Copy the `blocks-test` folder into `wp-content/plugins/`.
-2. Run the build step (required for the editor blocks):
+2. Run the build step into the root plugin folder (required for the editor blocks):
    ```bash
-   cd wp-content/plugins/blocks-test
    npm install
    npm run build
    ```
