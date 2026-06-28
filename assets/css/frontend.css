@@ -1,0 +1,258 @@
+/**
+ * Blocks Test — Frontend Styles
+ */
+
+/* ============================================================
+   Custom Properties
+   ============================================================ */
+:root {
+	--bt-color-bg:          #f8f9fb;
+	--bt-color-surface:     #ffffff;
+	--bt-color-border:      #e2e6ee;
+	--bt-color-text:        #1a1f2e;
+	--bt-color-text-muted:  #64718a;
+	--bt-color-accent:      #4f46e5;
+	--bt-color-accent-soft: #eef2ff;
+	--bt-color-accent-dark: #3730a3;
+	--bt-color-chip-active: #1a1f2e;
+	--bt-radius-card:       10px;
+	--bt-radius-chip:       99px;
+	--bt-shadow-card:       0 1px 3px rgba(26,31,46,.08), 0 4px 12px rgba(26,31,46,.05);
+	--bt-shadow-card-hover: 0 4px 16px rgba(26,31,46,.12), 0 8px 32px rgba(26,31,46,.08);
+	--bt-transition:        200ms cubic-bezier(.4,0,.2,1);
+	--bt-font-sans:         -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+/* ============================================================
+   Posts Filter
+   ============================================================ */
+.bt-posts-filter {
+	margin-block-end: 2.5rem;
+}
+
+.bt-posts-filter__inner {
+	display:     flex;
+	flex-wrap:   wrap;
+	align-items: flex-start;
+	gap:         1.5rem;
+}
+
+.bt-filter-group {
+	display:        flex;
+	flex-direction: column;
+	gap:            .625rem;
+}
+
+.bt-filter-group__label {
+	font-size:      11px;
+	font-weight:    700;
+	letter-spacing: .08em;
+	text-transform: uppercase;
+	margin:         0;
+}
+
+.bt-filter-group__chips {
+	display:   flex;
+	flex-wrap: wrap;
+	gap:       .5rem;
+}
+
+.bt-filter-chip {
+	appearance:       none;
+	display:          inline-flex;
+	align-items:      center;
+	padding:          .3125rem .875rem;
+	border-radius:    var(--bt-radius-chip);
+	border:           1.5px solid var(--bt-color-border);
+	background:       var(--bt-color-surface);
+	color:            var(--bt-color-text);
+	font-size:        .8125rem;
+	font-weight:      500;
+	line-height:      1.4;
+	cursor:           pointer;
+	transition:       border-color var(--bt-transition),
+	                  background   var(--bt-transition),
+	                  color        var(--bt-transition),
+	                  transform    var(--bt-transition);
+	user-select:      none;
+	-webkit-tap-highlight-color: transparent;
+}
+
+.bt-filter-chip:hover {
+	border-color: var(--bt-color-accent);
+	color:        var(--bt-color-accent);
+}
+
+.bt-filter-chip:focus-visible {
+	outline:        2px solid var(--bt-color-accent);
+	outline-offset: 2px;
+}
+
+.bt-filter-chip.is-active,
+.bt-filter-chip[aria-pressed="true"] {
+	background:   var(--bt-color-chip-active);
+	border-color: var(--bt-color-chip-active);
+	color:        #ffffff;
+	transform:    scale(.97);
+}
+
+.bt-filter-chip.is-active:hover,
+.bt-filter-chip[aria-pressed="true"]:hover {
+	background:   var(--bt-color-accent-dark);
+	border-color: var(--bt-color-accent-dark);
+	color:        #ffffff;
+}
+
+
+/* ============================================================
+   Posts Grid
+   ============================================================ */
+.bt-posts-grid {
+	display:               grid;
+	gap:                   1.75rem;
+	transition:            opacity 180ms ease;
+}
+
+.bt-posts-grid.is-transitioning {
+	opacity: 0;
+}
+
+.bt-posts-grid--cols-2 { grid-template-columns: repeat(2, 1fr); }
+.bt-posts-grid--cols-3 { grid-template-columns: repeat(3, 1fr); }
+.bt-posts-grid--cols-4 { grid-template-columns: repeat(4, 1fr); }
+
+/* Responsive collapse */
+@media (max-width: 900px) {
+	.bt-posts-grid--cols-3,
+	.bt-posts-grid--cols-4 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+	.bt-posts-grid--cols-2,
+	.bt-posts-grid--cols-3,
+	.bt-posts-grid--cols-4 { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   Post Card
+   ============================================================ */
+.bt-post-card {
+
+	border-radius: var(--bt-radius-card);
+	box-shadow:    var(--bt-shadow-card);
+	overflow:      hidden;
+	display:       flex;
+	flex-direction:column;
+	transition:    box-shadow var(--bt-transition), transform var(--bt-transition);
+}
+
+.bt-post-card:hover {
+	box-shadow: var(--bt-shadow-card-hover);
+	transform:  translateY(2px);
+}
+
+.bt-post-card__image-link {
+	display: block;
+	overflow: hidden;
+}
+
+.bt-post-card__image {
+	display:    block;
+	width:      100%;
+	aspect-ratio: 16 / 9;
+	object-fit: cover;
+	transition: transform 320ms cubic-bezier(.4,0,.2,1);
+}
+
+.bt-post-card:hover .bt-post-card__image {
+	transform: scale(1.04);
+}
+
+.bt-post-card__body {
+	padding:        1.25rem 1.375rem 1.5rem;
+	display:        flex;
+	flex-direction: column;
+	gap:            .5rem;
+	flex:           1;
+}
+
+.bt-post-card__date {
+	font-size:      .75rem;
+	font-weight:    500;
+	letter-spacing: .04em;
+	color:          var(--bt-color-text-muted);
+	text-transform: uppercase;
+}
+
+.bt-post-card__title {
+	font-size:   1.0625rem;
+	font-weight: 700;
+	line-height: 1.3;
+	margin:      0;
+	color:       var(--bt-color-text);
+}
+
+.bt-post-card__title a {
+	color:           inherit;
+	text-decoration: none;
+}
+
+.bt-post-card__title a:hover {
+	color: var(--bt-color-accent);
+}
+
+.bt-post-card__excerpt {
+	font-size:   .875rem;
+	line-height: 1.6;
+	color:       var(--bt-color-text-muted);
+	margin:      0;
+	display:            -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 3;
+	overflow:           hidden;
+}
+
+/* ============================================================
+   Pagination
+   ============================================================ */
+.bt-pagination {
+	display:         flex;
+	align-items:     center;
+	justify-content: center;
+	gap:             1.25rem;
+	margin-block-start: 2.5rem;
+}
+
+.bt-pagination__btn {
+	appearance:    none;
+	background:    var(--bt-color-surface);
+	border:        1.5px solid var(--bt-color-border);
+	border-radius: var(--bt-radius-chip);
+	padding:       .4375rem 1.125rem;
+	font-size:     .875rem;
+	font-weight:   600;
+	cursor:        pointer;
+	transition:    border-color var(--bt-transition), color var(--bt-transition), background var(--bt-transition);
+}
+
+.bt-pagination__btn:hover:not(:disabled) {
+	border-color: var(--bt-color-accent);
+	color:        var(--bt-color-accent);
+}
+
+.bt-pagination__btn:focus-visible {
+	outline:        2px solid var(--bt-color-accent);
+	outline-offset: 2px;
+}
+
+.bt-pagination__btn:disabled {
+	opacity: .35;
+	cursor:  not-allowed;
+}
+
+.bt-pagination__info {
+	font-size:  .875rem;
+	color:      var(--bt-color-text-muted);
+	min-width:  7rem;
+	text-align: center;
+}
