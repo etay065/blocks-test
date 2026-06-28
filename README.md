@@ -18,9 +18,9 @@ A WordPress plugin that registers two custom Gutenberg blocks — **Posts Grid**
 
 1. Copy the `blocks-test` folder into `wp-content/plugins/`.
 2. Run the build step (required for the editor blocks):
-   **cd wp-content/plugins/blocks-test**
-   **npm install**
-   **npm run build**
+   *cd wp-content/plugins/blocks-test*
+   *npm install*
+   *npm run build*
 3. Activate the plugin via **Plugins → Installed Plugins**.
 4. On activation the plugin automatically:
    - Creates 5 categories (prefixed `blocks-test-`) and 8 tags (prefixed `blocks-test-`).
